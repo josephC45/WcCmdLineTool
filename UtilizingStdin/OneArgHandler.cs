@@ -31,10 +31,9 @@ namespace WCApp.UtilizingStdin
         public int NumberOfBytes()
         {
             int count = 0;
-            Encoding utf8 = Encoding.UTF8;
             foreach (string line in _stdinStr)
             {
-                count += utf8.GetByteCount(line);
+                count += System.Text.ASCIIEncoding.UTF8.GetByteCount(line);
             }
             return count;
         }
@@ -57,7 +56,7 @@ namespace WCApp.UtilizingStdin
             int count = 0;
             foreach (string line in _stdinStr)
             {
-                count += line.Split(" ").Count();
+                count += line.Split(new char[] {' ','\n','\r'}, StringSplitOptions.RemoveEmptyEntries).Count();
             }
             return count;
         }

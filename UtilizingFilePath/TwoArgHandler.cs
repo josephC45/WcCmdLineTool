@@ -1,8 +1,9 @@
-﻿using WCApp.Interfaces;
+﻿using System.Text.RegularExpressions;
+using WCApp.Interfaces;
 
 namespace WCApp.UtilizingFilePath
 {
-    public class TwoArgHandler : IWcOptionFunctions
+    public class TwoArgHandler : IWcNeededFunctions
     {
         private readonly TwoArgFactory _twoArgFactory;
         public TwoArgHandler(TwoArgFactory twoArgs)
@@ -31,7 +32,8 @@ namespace WCApp.UtilizingFilePath
                 string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    count += line.Split(" ").Length;
+                    line.Trim();
+                    count += line.Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).Count();
                 }
             }
             return count;
@@ -39,7 +41,7 @@ namespace WCApp.UtilizingFilePath
         public int NumberOfBytes()
         {
             long count = new FileInfo(_twoArgFactory.path).Length;
-            return Convert.ToInt16(count);
+            return Convert.ToInt32(count);
         }
         #endregion
 
