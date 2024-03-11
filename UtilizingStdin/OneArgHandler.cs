@@ -28,14 +28,15 @@ namespace WCApp.UtilizingStdin
             return;
         }
 
+        //TODO: Fix byte count
         public int NumberOfBytes()
         {
             int count = 0;
             foreach (string line in _stdinStr)
             {
-                count += System.Text.ASCIIEncoding.UTF8.GetByteCount(line);
+                count += System.Text.ASCIIEncoding.ASCII.GetByteCount(line);
             }
-            return count;
+            return count; 
         }
 
         public int NumberOfCharacters()

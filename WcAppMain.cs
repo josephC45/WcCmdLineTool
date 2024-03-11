@@ -1,6 +1,6 @@
 ﻿using WCApp.UtilizingFilePath;
 using WCApp.UtilizingStdin;
-//TODO: Finish testing for Stdin
+//TODO: Fix word count method for both one/two arg
 namespace WCApp
 {
     public class WcAppMain
